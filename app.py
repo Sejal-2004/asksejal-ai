@@ -49,7 +49,7 @@ if st.button("✨ Generate Response"):
 
         with st.spinner("Generating response..."):
             response = client.models.generate_content(
-                model="models/gemini-2.5-flash",
+                model="models/gemini-3.6-flash",
                 contents=prompt
             )
 
