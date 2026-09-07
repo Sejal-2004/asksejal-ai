@@ -1,11 +1,9 @@
 import streamlit as st
-import google.genai as genai
+from google import genai
 
 # Configure Gemini API
 
-genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
-
-model = genai.GenerativeModel(model_name="gemini-1.5-flash")
+client = genai.Client(api_key=st.secrets["GEMINI_API_KEY"])
 
 # Page Configuration
 
@@ -14,11 +12,8 @@ st.set_page_config(
     page_icon="🤖"
 )
 
-# Header
-
 st.title("🤖 AskSejal AI")
 st.subheader("Your Personal AI Learning Buddy")
-
 st.write("Learn any topic in a simple and interactive way.")
 st.divider()
 
@@ -36,7 +31,6 @@ activity = st.selectbox(
     ]
 )
 
-
 # Generate Button
 
 if st.button("✨ Generate Response"):
@@ -45,37 +39,23 @@ if st.button("✨ Generate Response"):
         st.warning("Please enter a topic first.")
     else:
         if activity == "Explain Topic":
-            prompt = f"""
-            You are AskSejal AI.
-            Explain {topic} in simple language for a beginner.
-            Keep the explanation short and easy to understand.
-            End with 3 key takeaways.
-            """
+            prompt = f"Explain {topic} in simple language for a beginner. End with 3 key takeaways."
         elif activity == "Real-Life Example":
-            prompt = f"""
-            You are AskSejal AI.
-            Give one simple real-life example of {topic}.
-            Explain it in beginner-friendly language.
-            """
+            prompt = f"Give one simple real-life example of {topic} in beginner-friendly language."
         elif activity == "Generate Quiz":
-            prompt = f"""
-            You are AskSejal AI.
-            Create 5 multiple-choice questions on {topic}.
-            Give four options for each question.
-            Provide the correct answer after every question.
-            """
+            prompt = f"Create 5 multiple-choice questions on {topic} with four options each and provide the correct answer."
         else:
-            prompt = f"""
-            You are AskSejal AI.
-            Answer this question in simple language:
-            {topic}
-            """
+            prompt = f"Answer this question in simple language: {topic}"
 
         with st.spinner("Generating response..."):
-            response = model.generate_content(prompt)
+            response = client.models.generate_content(
+                model="gemini-1.5-flash",
+                contents=prompt
+            )
 
         st.success("Response Generated!")
         st.write(response.text)
 
 st.divider()
 st.caption("Made with ❤️ by Sejal Singh | Powered by Gemini AI")
+
