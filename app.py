@@ -4,9 +4,6 @@ from google import genai
 # Configure Gemini API
 
 client = genai.Client(api_key=st.secrets["GEMINI_API_KEY"])
-# Debug: list available models
-for m in client.models.list():
-    st.write(m.name)
 
 # Page Configuration
 
@@ -52,7 +49,7 @@ if st.button("✨ Generate Response"):
 
         with st.spinner("Generating response..."):
             response = client.models.generate_content(
-                model="gemini-1.5-flash",
+                model="models/gemini-2.5-flash",
                 contents=prompt
             )
 
