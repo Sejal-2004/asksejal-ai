@@ -4,7 +4,9 @@ from google import genai
 # Configure Gemini API
 
 client = genai.Client(api_key=st.secrets["GEMINI_API_KEY"])
-st.write(client.models.list())
+# Debug: list available models
+for m in client.models.list():
+    st.write(m.name)
 
 # Page Configuration
 
