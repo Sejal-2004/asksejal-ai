@@ -1,11 +1,11 @@
 import streamlit as st
-import google.generativeai as genai
+import google.genai as genai
 
 # Configure Gemini API
 
 genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
 
-model = genai.GenerativeModel("gemini-1.5-flash")
+model = genai.GenerativeModel(model_name="gemini-1.5-flash")
 
 # Page Configuration
 
