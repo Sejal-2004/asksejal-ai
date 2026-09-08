@@ -134,8 +134,8 @@ The project gave me an opportunity to apply my learning in **Generative AI and A
 
 ### 📂 Project Resources
 
-- 🏆 [AI EMPOW(H)ER Certificate](./documents/AI EMPOWEHER CERTIFICATE.pdf)
-- 📄 [AskSejal AI Capstone Project](./documents/Capstone_Project_Sejal_Singh.pdf)
+- 🏆 [AI EMPOW(H)ER Certificate](./documents/AI-EMPOWHER-CERTIFICATE.pdf)
+- 📄 [AskSejal AI Capstone Project](./documents/Capstone-Project-Sejal-Singh.pdf)
 ---
 
 ## 🔮 Future Improvements
